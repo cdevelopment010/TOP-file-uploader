@@ -7,11 +7,17 @@
   - [ ] Bcrypt setup
   - 
 
+- Sign Up
+  - [x] View with confirm passport
+  - [x] Controller to save to database
+  - [x] db query to create user
+  - [x] Save the password with bcrypt
+
 - Sign In
   - [ ] View for sign in
   - [ ] Controller for sign in
   - [ ] Routes for sign in
-  - [ ] Saving passwords with Bcrytp
+  - [ ] check passwords with Bcrypt
 
 
 
