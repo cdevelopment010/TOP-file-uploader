@@ -30,7 +30,7 @@ exports.createUser = async (user) => {
 
 exports.updateUser = async(user) => {
     return await prisma.user.update({
-        where: {email: user.email},
+        where: {id: user.id},
         data: {
             updatedAt: new Date()
         }

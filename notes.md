@@ -14,10 +14,10 @@
   - [x] Save the password with bcrypt
 
 - Sign In
-  - [ ] View for sign in
-  - [ ] Controller for sign in
-  - [ ] Routes for sign in
-  - [ ] check passwords with Bcrypt
+  - [x] View for sign in
+  - [x] Controller for sign in
+  - [x] Routes for sign in
+  - [x] check passwords with Bcrypt
 
 
 

@@ -7,3 +7,12 @@ exports.getHomePage = async (req, res) => {
     
     res.send("Home page");
 }
+
+exports.signOut = async (req, res) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+        res.redirect("/");
+    })
+}

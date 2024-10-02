@@ -3,5 +3,6 @@ const indexRouter = Router();
 const indexController = require("../controllers/indexController"); 
 
 indexRouter.get("/", indexController.getHomePage);
+indexRouter.get("/sign-out", indexController.signOut)
 
 module.exports = indexRouter; 

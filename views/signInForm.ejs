@@ -4,5 +4,11 @@
 
 <form method="post" action="/sign-in">
 
+    <label for="">Email:</label>
+    <input type="email" name="email" id="email" required value="<%= locals.user ? user.email : '' %>">
+
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+
     <button type="submit">Sign In</button>
 </form>
