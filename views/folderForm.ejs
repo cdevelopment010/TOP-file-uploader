@@ -1,0 +1,24 @@
+<h1>Folder Form</h1>
+
+<%- include("partials/errors") %>
+
+<form method="post" action="/folder/create">
+
+    <label for="name">
+        Name:
+    </label>
+
+    <input type="text" name="name" id="name" value="<%= locals.folder ? folder.name : '' %>" required>
+
+    <% if (locals.folders) { %> 
+        <label for="parentFolder">Parent folder</label>
+        <select name="parentFolder" id="parentFolder">
+            <option value="">--NONE--</option>
+            <% folders.forEach(folder => { %> 
+                <option value="<%= folder.id %>"><%= folder.name %></option>
+            <% }) %>
+        </select>
+    <% } %>
+    
+    <button type="submit">Create folder</button>
+</form>

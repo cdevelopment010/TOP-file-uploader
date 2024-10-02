@@ -44,9 +44,9 @@ exports.createFolder = async (folder, user) => {
                 connect: {id: user.id}
             },
             name: folder.name, 
-            parentId: folder?.parentId ? {
+            parentFolder: folder?.parentId ? {
                 connect: {
-                    id: folder.parentId
+                    id: parseInt(folder.parentId)
                 } 
             } : undefined,
         },
@@ -60,6 +60,36 @@ exports.updateFolder = async (folder) => {
         where: {id: folder.id},
         data: {
             name: folder.name
+        }
+    })
+}
+
+exports.allUserFolders = async(userid) => {
+    return await prisma.folder.findMany({
+        where: {
+            userId: userid
+        }
+    })
+}
+
+exports.allUsersFoldersStructure = async (userid)=> {
+    return await prisma.folder.findMany({
+        where: {
+            userId: userid,
+        }, 
+        include: {
+            subfolder: true
+        }
+    })
+}
+
+exports.getFolderById = async (id) => {
+    return await prisma.folder.findFirst({
+        where: {
+            id: parseInt(id)
+        },
+        include: {
+            subfolder: true
         }
     })
 }

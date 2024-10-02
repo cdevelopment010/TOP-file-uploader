@@ -3,9 +3,8 @@
 - App.js
   - [x] Set view engine
   - [x] Set public folder
-  - [ ] Passport strategy
-  - [ ] Bcrypt setup
-  - 
+  - [x] Passport strategy
+  - [x] Bcrypt setup
 
 - Sign Up
   - [x] View with confirm passport
@@ -19,7 +18,11 @@
   - [x] Routes for sign in
   - [x] check passwords with Bcrypt
 
-
+- Create folders
+  - [ ] View which includes name & optional parent folder? 
+  - [ ] Controller to get and post
+  - [ ] Routes to get and post
+  - [ ] db queries
 
 
 ------
@@ -30,3 +33,6 @@ Folders can have folders within them
 Folders can have files within them
 Users have access to folders
 Users have acceess to files
+
+
+------

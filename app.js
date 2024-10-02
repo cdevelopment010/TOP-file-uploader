@@ -15,6 +15,7 @@ const db = require("./prisma/queries");
 const indexRouter = require("./routes/indexRouter");
 const signInRouter = require("./routes/signInRouter");
 const signUpRouter = require("./routes/signUpRouter");
+const folderRouter = require("./routes/folderRouter");
 
 
 app.use(express.json());
@@ -41,6 +42,7 @@ app.use((req, res, next) => {
 app.use("/", indexRouter); 
 app.use("/sign-in", signInRouter); 
 app.use("/sign-up", signUpRouter); 
+app.use("/folder", folderRouter);
 
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
