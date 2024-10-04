@@ -29,3 +29,15 @@ exports.getFolderById = async (req, res) => {
         folder: folder
     })
 }
+
+exports.postDeleteFolder = async (req, res, next) => {
+    const { id } = req.params;
+    await db.deleteFolder(parseInt(id))
+        .then(() => {
+            return res.redirect("/");
+        })
+        .catch(err => {
+            console.error(err);
+            return next(err);
+        })
+}

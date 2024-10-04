@@ -23,9 +23,9 @@
   - [x] Controller to get and post
   - [x] Routes to get and post
   - [x] db queries
-  - [ ] Move folders
-  - [ ] update name / parent
-  - [ ] delete folders
+  - [ ] Move folders (hierarchy)
+  - [ ] update name 
+  - [x] delete folders
 
 - Create files
   - [ ] Upload files to specific folders

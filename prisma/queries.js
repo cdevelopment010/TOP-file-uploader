@@ -64,6 +64,18 @@ exports.updateFolder = async (folder) => {
     })
 }
 
+exports.deleteFolder = async (id) => {
+    return await prisma.folder.delete({
+        where: {
+            id: parseInt(id)
+        },
+        include: {
+            parentFolder: true,
+            file: true,
+        }
+    })
+}
+
 exports.allUserFolders = async(userid) => {
     return await prisma.folder.findMany({
         where: {
