@@ -11,7 +11,7 @@ exports.getUserByEmail = async(email) => {
 exports.getUserById = async(id) => {
     return await prisma.user.findFirst({
         where: {
-            id: id
+            id: parseInt(id)
         }
     })
 }
@@ -90,6 +90,18 @@ exports.getFolderById = async (id) => {
         },
         include: {
             subfolder: true
+        }
+    })
+}
+
+exports.deleteUser = async (id) => {
+    return await prisma.user.delete({
+        where: {
+            id: id
+        },
+        include: {
+            folder: true,
+            file: true,
         }
     })
 }

@@ -34,10 +34,10 @@ model User {
 model Folder {
   id Int @id @default(autoincrement())
   name String?
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId Int
   file File[]
-  parentFolder Folder? @relation("subfolder",fields: [parentId], references: [id]) //self relation
+  parentFolder Folder? @relation("subfolder",fields: [parentId], references: [id], onDelete: Cascade) //self relation
   parentId Int?
   subfolder Folder[] @relation("subfolder")  //needed for self relation
 
@@ -45,11 +45,11 @@ model Folder {
 
 model File {
   id Int @id @default(autoincrement())
-  folder Folder @relation(fields: [folderId], references: [id])
+  folder Folder @relation(fields: [folderId], references: [id], onDelete: Cascade)
   folderId Int
   name String
   size Decimal @db.Decimal(10,2)
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())

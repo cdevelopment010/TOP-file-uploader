@@ -18,11 +18,34 @@
   - [x] Routes for sign in
   - [x] check passwords with Bcrypt
 
-- Create folders
-  - [ ] View which includes name & optional parent folder? 
-  - [ ] Controller to get and post
-  - [ ] Routes to get and post
-  - [ ] db queries
+- folders
+  - [x] View which includes name & optional parent folder? 
+  - [x] Controller to get and post
+  - [x] Routes to get and post
+  - [x] db queries
+  - [ ] Move folders
+  - [ ] update name / parent
+  - [ ] delete folders
+
+- Create files
+  - [ ] Upload files to specific folders
+  - [ ] Save to file system
+    - [ ] Later save to online storage
+  - [ ] delete files
+  - [ ] move files
+  - [ ] Rename files
+
+
+- User
+  - [x] Should be able to delete user
+    - [x] With all files and folders
+
+- Share files and folders
+
+- Nice to have
+  - drag & drop folders to create relations
+  - drag & drop files
+  - Custom right click to delete, rename etc
 
 
 ------
