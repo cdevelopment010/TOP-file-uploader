@@ -35,7 +35,6 @@ exports.postSignIn = [
             if (err) { 
                 return next(err);
             }
-            console.log(user);
             if (!user) {
                 let errors = [{msg: info.message}]
                 return res.status(400).render("signInForm", {

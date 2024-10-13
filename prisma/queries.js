@@ -101,7 +101,8 @@ exports.getFolderById = async (id) => {
             id: parseInt(id)
         },
         include: {
-            subfolder: true
+            subfolder: true,
+            file: true
         }
     })
 }
@@ -116,4 +117,22 @@ exports.deleteUser = async (id) => {
             file: true,
         }
     })
+}
+
+exports.createFile = async (fileData) => {
+    const file =  await prisma.file.create({
+        data: {
+            name: fileData.name,
+            path: fileData.path,
+            size: fileData.size,
+            user: {
+                connect: {id: parseInt(fileData.userId)}
+            },
+            folder: {
+                connect: {id: parseInt(fileData.folderId)}
+            }
+        }
+    })
+
+    return file; 
 }

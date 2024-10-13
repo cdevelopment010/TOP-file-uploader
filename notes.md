@@ -28,8 +28,8 @@
   - [x] delete folders
 
 - Create files
-  - [ ] Upload files to specific folders
-  - [ ] Save to file system
+  - [x] Upload files to specific folders
+  - [x] Save to file system
     - [ ] Later save to online storage
   - [ ] delete files
   - [ ] move files
@@ -41,6 +41,8 @@
     - [x] With all files and folders
 
 - Share files and folders
+
+- Styling
 
 - Nice to have
   - drag & drop folders to create relations

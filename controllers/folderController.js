@@ -23,8 +23,6 @@ exports.postFolderForm = async (req, res) => {
 exports.getFolderById = async (req, res) => {
     const { id } = req.params;
     const folder = await db.getFolderById(id);
-
-    console.log(folder);
     return res.render("folder", {
         folder: folder
     })

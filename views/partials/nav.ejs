@@ -1,0 +1,35 @@
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/folder/create">Create Folder</a></li>
+        <li><a href="/file/create">Upload File</a></li>
+
+
+        <% function renderFolders(folders, parentId, depth) { %>
+        <% folders
+            .filter(folder => folder.parentId === parentId) 
+            .forEach(folder => { %>
+            <li>
+                <a href="/folder/<%= folder.id%>"><%= folder.name %></a>
+                <% if (folders.some(f => f.parentId === folder.id)) { %> 
+                <ul>
+                    <% renderFolders(folders, folder.id, depth + 1); %> 
+                </ul>
+                <% } %>
+            </li>
+        <% }) %>
+        <% } %>
+    
+        <% if (locals.folders && folders.length > 0) { %>
+        <% renderFolders(folders, null, 0); %> 
+        <% } %>
+
+        <% if (locals.currentUser) { %> 
+            <li><a href="/sign-out">Sign Out</a></li>
+        <% } %>
+        <% if (!locals.currentUser) { %> 
+            <li><a href="/sign-in">Sign In</a></li>
+            <li><a href="/sign-up">Sign Up</a></li>
+        <% } %>
+    </ul>
+</nav>

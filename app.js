@@ -3,6 +3,9 @@ const path = require("node:path");
 const express = require("express");
 const app = express(); 
 
+const multer = require("multer"); 
+const upload = multer({ dest: "./public/data/uploads/"})
+
 const ejsLayouts = require('express-ejs-layouts');
 
 const session = require("./config/session");
@@ -16,6 +19,8 @@ const indexRouter = require("./routes/indexRouter");
 const signInRouter = require("./routes/signInRouter");
 const signUpRouter = require("./routes/signUpRouter");
 const folderRouter = require("./routes/folderRouter");
+const fileRouter = require("./routes/fileRouter");
+
 
 
 app.use(express.json());
@@ -43,6 +48,7 @@ app.use("/", indexRouter);
 app.use("/sign-in", signInRouter); 
 app.use("/sign-up", signUpRouter); 
 app.use("/folder", folderRouter);
+app.use("/file", fileRouter);
 
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));

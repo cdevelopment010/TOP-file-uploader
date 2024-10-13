@@ -1,21 +1,2 @@
-<ul>
-    <% function renderFolders(folders, parentId, depth) { %>
-      <% folders
-        .filter(folder => folder.parentId === parentId) 
-        .forEach(folder => { %>
-          <li>
-            <a href="/folder/<%= folder.id%>"><%= folder.name %></a>
-            <% if (folders.some(f => f.parentId === folder.id)) { %> 
-              <ul>
-                <% renderFolders(folders, folder.id, depth + 1); %> 
-              </ul>
-            <% } %>
-          </li>
-      <% }) %>
-    <% } %>
-  
-    <% if (folders && folders.length > 0) { %>
-      <% renderFolders(folders, null, 0); %> 
-    <% } %>
-</ul>
+
   
