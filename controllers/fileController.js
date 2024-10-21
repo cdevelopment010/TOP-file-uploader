@@ -24,8 +24,27 @@ exports.postFileForm = async (req, res, next) => {
         console.error(err); 
         return next(err);
     }
+}
 
+exports.getDeleteFile = async (req, res) => {
+    const { id } = req.params; 
+    const file = db.getFileById(id)
+    res.render("fileDetail", {
+        file: file
+    })
+}
+exports.postDeleteFile = async (req, res) => {
+    const { id } = req.params; 
+    const file = db.getFileById(id)
+    res.render("fileDetail", {
+        file: file
+    })
+}
 
-
-
+exports.getFileById = async (req, res) => {
+    const { id } = req.params; 
+    const file = await db.getFileById(id)
+    res.render("fileDetail", {
+        file: file
+    })
 }

@@ -136,3 +136,16 @@ exports.createFile = async (fileData) => {
 
     return file; 
 }
+
+
+exports.getFileById = async (id) => {
+    return await prisma.file.findFirst({
+        where: {
+            id: parseInt(id)
+        },
+        include: {
+            folder: true,
+            user: true
+        }
+    })
+}

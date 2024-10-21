@@ -17,7 +17,10 @@ const upload = multer({ storage: storage}).single('fileUpload')
 
 fileRouter.get("/create", fileController.getFileForm);
 fileRouter.post("/create", upload, fileController.postFileForm)
-// fileRouter.get("/delete/:id", fileController.postDeleteFolder);
-// fileRouter.get("/:id", fileController.getFolderById);
+fileRouter.get("/delete/:id", fileController.getDeleteFile);
+fileRouter.post("/delete/:id", fileController.postDeleteFile);
+// fileRouter.get("/update/:id", fileController.getUpdateFile);
+// fileRouter.post("/update/:id", fileController.postUpdateFile);
+fileRouter.get("/:id", fileController.getFileById);
 
 module.exports = fileRouter; 

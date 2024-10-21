@@ -1,0 +1,18 @@
+<div class="modal" id="<%= modal.id %>" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-head">
+            <span><%= modal.header %></span>
+            <i class="close-modal">✖</i>
+        </div>
+        <div class="modal-body">
+            <%= modal.body %>
+        </div>
+        <div class="modal-footer">
+            <form action="<%= modal.action %>" method="post">
+                <input type="hidden" name="id" value="<%= modal.actionId %>">
+                <button type="submit"><%= modal.actionButton %></button>
+            </form>
+            <button type="button" class="close-modal">Close</button>
+        </div>
+    </div>
+</div>

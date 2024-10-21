@@ -1,0 +1,32 @@
+<h1><%= file.name %></h1>
+
+<div>
+    File size: <%=file.size %>
+</div>
+
+<div>
+    File Uploaded: <%=file.createdAt %>
+</div>
+
+<div>
+    <!-- <form action="/file/delete/<%=file.id%>" method="post">
+        <input type="number" value="<%=file.id%>" hidden name="fileId" id="fileId">
+        <button type="submit">Delete</button>
+    </form> -->
+    <button type="button" onclick="openModal('deleteFileModal')">Delete File</button>
+    <!-- <a href="/file/update/<%=file.id%>">Update</a> -->
+    <a href="/data/uploads/<%= file.name %>" download="<%= file.name %>">Download</a>
+
+</div>
+
+<!-- Modal Partial -->
+<%- include('partials/modal', { 
+    modal: {
+        id: 'deleteFileModal', 
+        header: 'Confirm Action', 
+        body: 'Are you sure you want to delete the file?', 
+        action: '/file/delete/' + file.id, 
+        actionId: file.id, 
+        actionButton: 'Confirm Delete' 
+    } 
+}) %>

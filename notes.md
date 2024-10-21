@@ -26,14 +26,16 @@
   - [ ] Move folders (hierarchy)
   - [ ] update name 
   - [x] delete folders
+    - [ ] cancel alert doesn't actually work. 
 
 - Create files
   - [x] Upload files to specific folders
   - [x] Save to file system
     - [ ] Later save to online storage
   - [ ] delete files
-  - [ ] move files
-  - [ ] Rename files
+  - ~~move files~~ Come back to this if I have time
+  - ~~Rename files~~ Come back to this if I have time
+  - [x] Get file details + download
 
 
 - User
