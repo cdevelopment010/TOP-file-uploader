@@ -26,13 +26,14 @@
   - [ ] Move folders (hierarchy)
   - [ ] update name 
   - [x] delete folders
-    - [ ] cancel alert doesn't actually work. 
+    - [x] Re work into modal.
 
 - Create files
   - [x] Upload files to specific folders
   - [x] Save to file system
     - [ ] Later save to online storage
-  - [ ] delete files
+  - [x] delete files
+    - [x] Use modal.
   - ~~move files~~ Come back to this if I have time
   - ~~Rename files~~ Come back to this if I have time
   - [x] Get file details + download
@@ -42,9 +43,11 @@
   - [x] Should be able to delete user
     - [x] With all files and folders
 
+- Styling
+
 - Share files and folders
 
-- Styling
+
 
 - Nice to have
   - drag & drop folders to create relations

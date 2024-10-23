@@ -149,3 +149,12 @@ exports.getFileById = async (id) => {
         }
     })
 }
+
+exports.deleteFileById = async (id) => {
+    return await prisma.file.delete({
+        where: {
+            id: parseInt(id)
+        }
+    })
+}
+

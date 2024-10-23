@@ -1,4 +1,8 @@
 const db = require("../prisma/queries");
+const fs = require("node:fs") //remove when moving to cloud storage
+
+const path = require("node:path");
+const assetsPath = path.join(__dirname, "public");
 
 exports.getFileForm = async (req, res, next) => {
     const folders = await db.allUserFolders();
@@ -28,17 +32,35 @@ exports.postFileForm = async (req, res, next) => {
 
 exports.getDeleteFile = async (req, res) => {
     const { id } = req.params; 
-    const file = db.getFileById(id)
+    const file = await db.getFileById(id)
     res.render("fileDetail", {
         file: file
     })
 }
 exports.postDeleteFile = async (req, res) => {
     const { id } = req.params; 
-    const file = db.getFileById(id)
-    res.render("fileDetail", {
-        file: file
-    })
+    const file = await db.getFileById(id)
+    await db.deleteFileById(id)
+        .then(() => {
+            fs.unlink(`./public/data/uploads/${file.name}`, err => {
+                console.log(file.name)
+                if (err) {
+                    if (err.code == "ENOENT"){
+                        console.error("file does not exist")
+                    } else { 
+                        return next(err);
+                    }
+                } else { 
+                    console.log("file deleted!")
+                }
+
+            })
+            return res.redirect("/")
+        })
+        .catch(err => {
+            console.error(err); 
+            return next(err)
+        })
 }
 
 exports.getFileById = async (req, res) => {
