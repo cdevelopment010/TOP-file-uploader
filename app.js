@@ -43,6 +43,14 @@ app.use((req, res, next) => {
     next(); 
 })
 
+app.use(async (req, res, next) => {
+    if (req.user) { 
+        const folders = await db.allUsersFoldersStructure(req.user.id);
+        res.locals.folders = folders;
+    }
+    next();
+})
+
 
 app.use("/", indexRouter); 
 app.use("/sign-in", signInRouter); 
