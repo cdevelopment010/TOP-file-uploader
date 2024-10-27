@@ -107,6 +107,34 @@ exports.getFolderById = async (id) => {
     })
 }
 
+exports.getFolderPath = async (id) => {
+    async function buildPath(id, path = []) {
+        const folder = await prisma.folder.findUnique({
+          where: { id: id },
+          select: {
+            id: true,
+            name: true,
+            parentFolder: {
+              select: { id: true, name: true }
+            }
+          }
+        });
+    
+        if (!folder) return null;   
+        
+        path.unshift({ name: folder.name, id: folder.id});    
+        
+        if (folder.parentFolder) {
+          return buildPath(folder.parentFolder.id, path);
+        }
+    
+        return path; 
+      }
+    
+      const path = await buildPath(id);
+      return path ?? null;
+}
+
 exports.deleteUser = async (id) => {
     return await prisma.user.delete({
         where: {

@@ -43,7 +43,6 @@ exports.postDeleteFile = async (req, res) => {
     await db.deleteFileById(id)
         .then(() => {
             fs.unlink(`./public/data/uploads/${file.name}`, err => {
-                console.log(file.name)
                 if (err) {
                     if (err.code == "ENOENT"){
                         console.error("file does not exist")
