@@ -9,10 +9,15 @@
 </head>
 <body>
     <main>
-        <%- include("partials/nav") %>
-        <section class="p-5">
+        <% if (locals.currentUser) { %> 
+            <%- include("partials/nav") %>
+            
+            <section class="p-5">
+                <%- body %>
+            </section>
+        <% } else { %>
             <%- body %>
-        </section>
+        <% } %>
     </main>
     
     <script src="/js/modalConfig.js"></script>
