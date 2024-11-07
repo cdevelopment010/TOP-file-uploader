@@ -31,7 +31,7 @@
 - Create files
   - [x] Upload files to specific folders
   - [x] Save to file system
-    - [ ] Later save to online storage
+    - [x] Later save to online storage
   - [x] delete files
     - [x] Use modal.
   - ~~move files~~ Come back to this if I have time
@@ -43,7 +43,18 @@
   - [x] Should be able to delete user
     - [x] With all files and folders
 
-- Styling
+- [ ] Supabase
+  - [x] Upload file
+  - [x] Download file
+  - [ ] Delete file 
+  - [ ] Share file? 
+
+- [ ] Table actions need implementing
+
+- [ ] Styling
+  - [ ] Table actions icons need replacing
+  - [ ] Create folder select needs stlying to match input
+  - [ ] Delete folder btn needs updating
 
 - Share files and folders
 

@@ -9,14 +9,8 @@
 </div>
 
 <div>
-    <!-- <form action="/file/delete/<%=file.id%>" method="post">
-        <input type="number" value="<%=file.id%>" hidden name="fileId" id="fileId">
-        <button type="submit">Delete</button>
-    </form> -->
     <button type="button" onclick="openModal('deleteFileModal')">Delete File</button>
-    <!-- <a href="/file/update/<%=file.id%>">Update</a> -->
-    <a href="/data/uploads/<%= file.name %>" download="<%= file.name %>">Download</a>
-
+    <a href="<%= file.path %>" download="<%= file.path %>">Download</a>
 </div>
 
 <!-- Modal Partial -->
