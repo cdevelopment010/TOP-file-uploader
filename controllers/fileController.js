@@ -34,8 +34,6 @@ exports.postFileForm = async (req, res, next) => {
         return res.status(400).send("Error generating file URL.");
     }
 
-    console.log(publicUrlData)
-
     const fileData = { 
         name: req.file.originalname, 
         path: publicUrlData.publicUrl,
@@ -57,6 +55,10 @@ exports.postFileForm = async (req, res, next) => {
 exports.getDeleteFile = async (req, res) => {
     const { id } = req.params; 
     const file = await db.getFileById(id)
+
+    const fileNameOnline = file.path.split("/")[-1]; 
+    console.log(fileNameOnline);
+
     res.render("fileDetail", {
         file: file
     })
@@ -64,20 +66,14 @@ exports.getDeleteFile = async (req, res) => {
 exports.postDeleteFile = async (req, res) => {
     const { id } = req.params; 
     const file = await db.getFileById(id)
-    await db.deleteFileById(id)
-        .then(() => {
-            fs.unlink(`./public/data/uploads/${file.name}`, err => {
-                if (err) {
-                    if (err.code == "ENOENT"){
-                        console.error("file does not exist")
-                    } else { 
-                        return next(err);
-                    }
-                } else { 
-                    console.log("file deleted!")
-                }
 
-            })
+    const fileNameOnline = file.path.split("/")[file.path.split("/").length-1]; 
+    await db.deleteFileById(id)
+        .then(async () => {
+            const { data, error} = await supabase
+                .storage
+                .from("Files")
+                .remove([`public/${fileNameOnline}`])
             return res.redirect("/")
         })
         .catch(err => {

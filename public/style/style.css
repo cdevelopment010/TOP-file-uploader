@@ -147,7 +147,7 @@ table th {
 .fs-4 {font-size: 0.75rem;}
 .fs-5 {font-size: 0.5rem;}
 
-input {
+input, select {
     padding: 0.25rem 0.5rem;
     border-radius: 30px;
     transition: box-shadow 0.25s ease-in-out;
@@ -221,6 +221,11 @@ input {
     background-color: var(--color-1-hex);
 }
 
+.btn-secondary { 
+    color: black; 
+    background-color: var(--color-2-hex);
+}
+
 .sign-in, .sign-up {
     max-width: 50vh;
     min-width: 300px;
@@ -254,3 +259,14 @@ input {
     box-sizing: border-box;
     box-shadow: 4px 4px 8px rgba(var(--color-1-rgb, 0.5));
 }
+
+
+
+input[type="file"] {
+    border: none;
+    position: relative;
+  }
+  
+  input[type="file"]::file-selector-button {
+    display: none; 
+  }

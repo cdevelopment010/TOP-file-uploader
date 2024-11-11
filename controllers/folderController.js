@@ -6,8 +6,17 @@ exports.getFolderForm = async (req, res) => {
         return res.redirect("/sign-in")
     }
     const folders = await db.allUserFolders(req.user.id); 
+    let action = '/folder/create';
+    const folderId = req.params?.id; 
+    let currentFolder; 
+    if (folderId) { 
+        currentFolder = await db.getFolderById(folderId);
+        action = `/folder/update/${folderId}`;
+    }
     return res.render("folderForm", {
-        folders: folders
+        folders: folders, 
+        currentFolder: currentFolder, 
+        action: action,
     });
 }
 
@@ -17,6 +26,16 @@ exports.postFolderForm = async (req, res) => {
         parentId: req.body.parentFolder
     }
     await db.createFolder(folder, req.user); 
+    res.redirect("/");
+}
+exports.postUpdateFolderForm = async (req, res) => {
+    const folder = {
+        id: parseInt(req.params.id),
+        name: req.body.name,
+        parentId: req.body.parentFolder == "" ? null : parseInt(req.body.parentFolder)
+    }
+    console.log(folder);
+    await db.updateFolder(folder, req.user); 
     res.redirect("/");
 }
 

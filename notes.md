@@ -23,8 +23,8 @@
   - [x] Controller to get and post
   - [x] Routes to get and post
   - [x] db queries
-  - [ ] Move folders (hierarchy)
-  - [ ] update name 
+  - [x] Move folders (hierarchy)
+  - [x] update name 
   - [x] delete folders
     - [x] Re work into modal.
 

@@ -1,24 +1,31 @@
-<h1>Folder Form</h1>
+<h1 class="fc-3 mb-5">Folder Form</h1>
 
 <%- include("partials/errors") %>
 
-<form method="post" action="/folder/create">
+<form method="post" action="<%= locals.action %> " class="d-flex flex-column folder-form">
 
-    <label for="name">
-        Name:
-    </label>
+    <div class="mb-4">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= locals.currentFolder ? currentFolder.name : '' %>" required>
 
-    <input type="text" name="name" id="name" value="<%= locals.folder ? folder.name : '' %>" required>
+    </div>
+
+
 
     <% if (locals.folders) { %> 
-        <label for="parentFolder">Parent folder</label>
-        <select name="parentFolder" id="parentFolder">
-            <option value="">--NONE--</option>
-            <% folders.forEach(folder => { %> 
-                <option value="<%= folder.id %>"><%= folder.name %></option>
-            <% }) %>
-        </select>
+        <div class="mb-4">
+            <label for="parentFolder">Parent folder</label>
+            <select name="parentFolder" id="parentFolder">
+                <option value="">--NONE--</option>
+                <% folders.forEach(folder => { %> 
+                    <option value="<%= folder.id %>" <%= locals.currentFolder?.parentId == folder.id ? 'selected' : '' %> ><%= folder.name %></option>
+                <% }) %>
+            </select>
+        </div>
     <% } %>
-    
-    <button type="submit">Create folder</button>
+    <div>
+        <button type="submit" class="btn">
+            <%= locals.action.search("create") > -1 ? 'Create folder' : 'Update folder' %>
+        </button>
+    </div>
 </form>

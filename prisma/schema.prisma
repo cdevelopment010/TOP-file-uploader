@@ -41,6 +41,9 @@ model Folder {
   parentId Int?
   subfolder Folder[] @relation("subfolder")  //needed for self relation
 
+  shareId String? @unique @default(uuid())
+  shareExpire DateTime? 
+
 }
 
 model File {

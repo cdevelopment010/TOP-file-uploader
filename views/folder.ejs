@@ -4,7 +4,7 @@
 <div class="fs-3 mb-5">
   <a href="/file/create"><i class="fa-solid fa-circle-plus"></i><span class="ms-2">  Upload File</span></a>
   <a href="/folder/update/<%= folder.id %>"><i class="fa-solid fa-circle-plus"></i><span class="ms-2">  Update Folder</span></a>
-  <button type="button" onclick="openModal('deleteFolderModal')"><i class="fa-solid fa-trash-can"></i> Delete Folder</button>
+  <button type="button" onclick="openModal('deleteFolderModal')" class="btn btn-secondary"><i class="fa-solid fa-trash-can"></i> Delete Folder</button>
 </div>
 
 <% if (locals.folder.file && folder.file.length > 0) { %>

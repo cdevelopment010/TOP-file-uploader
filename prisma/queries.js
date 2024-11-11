@@ -49,6 +49,7 @@ exports.createFolder = async (folder, user) => {
                     id: parseInt(folder.parentId)
                 } 
             } : undefined,
+            shareId: null
         },
         update: {},
         where: {id: folder.id || 0 }
@@ -59,7 +60,8 @@ exports.updateFolder = async (folder) => {
     return await prisma.folder.update({
         where: {id: folder.id},
         data: {
-            name: folder.name
+            name: folder.name, 
+            parentId: folder.parentId == "" ? null : folder.parentId
         }
     })
 }
