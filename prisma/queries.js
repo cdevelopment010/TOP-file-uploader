@@ -188,3 +188,12 @@ exports.deleteFileById = async (id) => {
     })
 }
 
+exports.setSharedFolderByFolderId = async (id, expireDate, uuid) => {
+    return await prisma.folder.update({
+        where: {id: id}, 
+        data: {
+            shareId: uuid,
+            shareExpire: expireDate
+        }
+    })
+}

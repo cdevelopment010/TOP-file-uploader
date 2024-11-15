@@ -34,7 +34,7 @@
     - [x] Later save to online storage
   - [x] delete files
     - [x] Use modal.
-  - ~~move files~~ Come back to this if I have time
+  - [ ] move files
   - ~~Rename files~~ Come back to this if I have time
   - [x] Get file details + download
 
@@ -46,15 +46,22 @@
 - [ ] Supabase
   - [x] Upload file
   - [x] Download file
-  - [ ] Delete file 
+  - [?] Delete file (Need to test)
   - [ ] Share file? 
+    - [x] Added to table
+    - [ ] view for share folder form
+    - [ ] Implement routes (/share/:uuid)
+      - [ ] folder share get & post
+      - [ ] share get
+    - [ ] Implement controller
+    - [ ] Job to delete null shareId and ShareDate?  
 
 - [ ] Table actions need implementing
 
 - [ ] Styling
   - [ ] Table actions icons need replacing
-  - [ ] Create folder select needs stlying to match input
-  - [ ] Delete folder btn needs updating
+  - [x] Create folder select needs stlying to match input
+  - [x] Delete folder btn needs updating
 
 - Share files and folders
 
@@ -73,7 +80,7 @@ Thinking through model....
 Folders can have folders within them
 Folders can have files within them
 Users have access to folders
-Users have acceess to files
+Users have acceess to files -- scrap this. Sharing based on folders, will have access to all files in the folder. 
 
 
 ------
