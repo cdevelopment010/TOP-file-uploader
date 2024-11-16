@@ -2,15 +2,17 @@
 <div class="fc-3 fs-4">/<% if (locals.folder.folderPath.length) { %><% folder.folderPath.forEach(path => {%><a href="/folder/<%= path.id %>"><%= path.name %>/</a><% }) %><% }%></div>
 <h1 class="fc-3 fs-2"><%= folder.name %> 
   <% if (folder.shareId) { %> 
-    <button title="Copy share link" onclick="copyShareLink('<%= folder.shareId %>')"><i class="fa-solid fa-link"></i></a>
+    <button title="Copy share link" class="btn-none" onclick="copyShareLink('<%= folder.shareId %>')"><i class="fa-solid fa-link fa-2x"></i></a>
   <% } else { %>
     <a href="/folder/share/<%= folder.id %>"><i class="fa-solid fa-share-nodes"></i></a>
   <% } %>
 </h1>
-<div class="fs-3 mb-5">
-  <a href="/file/create"><i class="fa-solid fa-circle-plus"></i><span class="ms-2">  Upload File</span></a>
-  <a href="/folder/update/<%= folder.id %>"><i class="fa-solid fa-circle-plus"></i><span class="ms-2">  Update Folder</span></a>
-  <button type="button" onclick="openModal('deleteFolderModal')" class="btn btn-secondary"><i class="fa-solid fa-trash-can"></i> Delete Folder</button>
+<div class="fs-3 mb-5 d-flex align-items-center mt-2">
+  <a href="/file/create" ><i class="fa-solid fa-circle-plus"></i><span class="">  Upload File</span></a>
+  <a href="/folder/update/<%= folder.id %>" class="ms-2"><i class="fa-solid fa-circle-plus"></i><span class="">  Update Folder</span></a>
+  <% if (locals?.allowDelete != false) { %> 
+    <button type="button" onclick="openModal('deleteFolderModal')" class="btn btn-danger ms-auto"><i class="fa-solid fa-trash-can"></i> Delete Folder</button>
+  <% } %>
 </div>
 
 <% if (locals.folder.file && folder.file.length > 0) { %>
@@ -20,8 +22,6 @@
         <th class="p-2 ">Name</th>
         <th class="p-2 ">Size</th>
         <th class="p-2 ">Created</th>
-        <th class="p-2 ">Shared</th>
-        <th class="p-2 ">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -30,11 +30,6 @@
           <td class="p-2"><a href="/file/<%= f.id %>"><%= f.name %> </a></td>
           <td class="p-2"><%= f.size%></td>
           <td class="p-2"><%= f.createdAt.toLocaleDateString()%> <%= f.createdAt.toLocaleTimeString()%></td>
-          <td class="p-2"></td>
-          <td class="p-2">
-            <span><i class="fa-solid fa-trash-can">Delete</i></span>
-            <span><i class="fa-solid fa-download">Download</i></span>
-          </td>
         </tr>
       <% }) %>
     </tbody>

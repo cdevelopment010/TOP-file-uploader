@@ -47,23 +47,21 @@
   - [x] Upload file
   - [x] Download file
   - [?] Delete file (Need to test)
-  - [ ] Share file? 
+  - [x] Share file? 
     - [x] Added to table
-    - [ ] view for share folder form
-    - [ ] Implement routes (/share/:uuid)
-      - [ ] folder share get & post
-      - [ ] share get
-    - [ ] Implement controller
-    - [ ] Job to delete null shareId and ShareDate?  
-
-- [ ] Table actions need implementing
+    - [x] view for share folder form
+    - [x] Implement routes (/share/:uuid)
+      - [x] folder share get & post
+      - [x] share get
+    - [x] Implement controller
+    - [x] Job to delete null shareId and ShareDate?  
 
 - [ ] Styling
-  - [ ] Table actions icons need replacing
   - [x] Create folder select needs stlying to match input
   - [x] Delete folder btn needs updating
+  - [ ] file detail
 
-- Share files and folders
+- [x] Share folders
 
 
 

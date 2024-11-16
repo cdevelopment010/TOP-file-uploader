@@ -197,3 +197,31 @@ exports.setSharedFolderByFolderId = async (id, expireDate, uuid) => {
         }
     })
 }
+
+exports.getFolderByShareId = async (shareId) => {
+    return await prisma.folder.findFirst({
+        where: {
+            AND: {
+                shareId: shareId,
+                shareExpire: {gt: new Date()}
+
+            }
+        },
+        include: {
+            subfolder: true,
+            file: true
+        }
+    })
+}
+
+exports.cleanUpShareLink = async () => {
+    await prisma.folder.updateMany({
+        where: {
+            shareExpire: {lte: new Date()}
+        },
+        data: {
+            shareId: null,
+            shareExpire: null
+        }
+    })
+}

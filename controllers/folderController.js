@@ -34,7 +34,6 @@ exports.postUpdateFolderForm = async (req, res) => {
         name: req.body.name,
         parentId: req.body.parentFolder == "" ? null : parseInt(req.body.parentFolder)
     }
-    console.log(folder);
     await db.updateFolder(folder, req.user); 
     res.redirect("/");
 }
@@ -44,7 +43,6 @@ exports.getFolderById = async (req, res) => {
     const folder = await db.getFolderById(id);
     const path = await db.getFolderPath(parseInt(id))
     folder.folderPath = path; 
-    console.log(folder);
     return res.render("folder", {
         folder: folder
     })
@@ -72,7 +70,8 @@ exports.getShareFolderForm = async (req, res) => {
 }
 
 exports.postShareFolderForm = async (req, res) => {
-    const { id, shareExpire} = req.params;
+    const { id } = req.params;
+    const shareExpire = req.body.shareExpire;  
     let expireDate = new Date().getTime(); 
     switch(shareExpire){
         case '30mins': 
@@ -110,7 +109,7 @@ exports.postShareFolderForm = async (req, res) => {
     }
     expireDate = new Date(expireDate)
     const folderShareId = uuidv4(); 
-    const folder = await db.setSharedFolderByFolderId(parseInt(id), expireDate, folderShareId);
+    await db.setSharedFolderByFolderId(parseInt(id), expireDate, folderShareId);
     return res.redirect(`/folder/${id}`); 
 
 

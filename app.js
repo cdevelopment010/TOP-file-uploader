@@ -20,7 +20,7 @@ const signInRouter = require("./routes/signInRouter");
 const signUpRouter = require("./routes/signUpRouter");
 const folderRouter = require("./routes/folderRouter");
 const fileRouter = require("./routes/fileRouter");
-
+const shareRouter = require("./routes/shareRouter");
 
 
 app.use(express.json());
@@ -44,6 +44,11 @@ app.use((req, res, next) => {
 })
 
 app.use(async (req, res, next) => {
+    await db.cleanUpShareLink(); 
+    next(); 
+})
+
+app.use(async (req, res, next) => {
     if (req.user) { 
         const folders = await db.allUsersFoldersStructure(req.user.id);
         res.locals.folders = folders;
@@ -52,11 +57,13 @@ app.use(async (req, res, next) => {
 })
 
 
+
 app.use("/", indexRouter); 
 app.use("/sign-in", signInRouter); 
 app.use("/sign-up", signUpRouter); 
 app.use("/folder", folderRouter);
 app.use("/file", fileRouter);
+app.use("/share", shareRouter);
 
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
