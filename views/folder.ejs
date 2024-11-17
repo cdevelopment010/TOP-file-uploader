@@ -4,12 +4,14 @@
   <% if (folder.shareId) { %> 
     <button title="Copy share link" class="btn-none" onclick="copyShareLink('<%= folder.shareId %>')"><i class="fa-solid fa-link fa-2x"></i></a>
   <% } else { %>
-    <a href="/folder/share/<%= folder.id %>"><i class="fa-solid fa-share-nodes"></i></a>
+    <a href="/folder/share/<%= folder.id %>" title="Share Folder"><i class="fa-solid fa-share-nodes"></i></a>
   <% } %>
 </h1>
 <div class="fs-3 mb-5 d-flex align-items-center mt-2">
-  <a href="/file/create" ><i class="fa-solid fa-circle-plus"></i><span class="">  Upload File</span></a>
-  <a href="/folder/update/<%= folder.id %>" class="ms-2"><i class="fa-solid fa-circle-plus"></i><span class="">  Update Folder</span></a>
+  <div class="d-flex flex-column">
+    <a href="/folder/update/<%= folder.id %>" ><i class="fa-solid fa-pen"></i><span class="">  Update Folder</span></a>
+    <a href="/file/create" class="mt-2"><i class="fa-solid fa-circle-plus"></i><span class="">  Upload File</span></a>
+  </div>
   <% if (locals?.allowDelete != false) { %> 
     <button type="button" onclick="openModal('deleteFolderModal')" class="btn btn-danger ms-auto"><i class="fa-solid fa-trash-can"></i> Delete Folder</button>
   <% } %>

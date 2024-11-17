@@ -1,16 +1,16 @@
-<h1><%= file.name %></h1>
+<h1 class="fc-3 fs-2"><%= file.name %></h1>
 
-<div>
+<div class="mt-2">
     File size: <%=file.size %>
 </div>
 
-<div>
-    File Uploaded: <%=file.createdAt %>
+<div class="mt-2">
+    File Uploaded: <%= file.createdAt.toLocaleDateString() %> <%= file.createdAt.toLocaleTimeString() %>
 </div>
 
-<div>
-    <button type="button" onclick="openModal('deleteFileModal')">Delete File</button>
-    <a href="<%= file.path %>" download="<%= file.path %>">Download</a>
+<div class="mt-2">
+    <button type="button" class="btn btn-danger" onclick="openModal('deleteFileModal')">Delete File</button>
+    <a href="<%= file.path %>" download="<%= file.path %>" class="btn link-none">Download</a>
 </div>
 
 <!-- Modal Partial -->

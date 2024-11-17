@@ -34,6 +34,7 @@ nav {
 }
 
 .list-style-none {list-style: none;}
+.link-none { text-decoration: none;}
 
 nav a {
     color: white;

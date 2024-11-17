@@ -56,10 +56,10 @@
     - [x] Implement controller
     - [x] Job to delete null shareId and ShareDate?  
 
-- [ ] Styling
+- [x] Styling
   - [x] Create folder select needs stlying to match input
   - [x] Delete folder btn needs updating
-  - [ ] file detail
+  - [x] file detail
 
 - [x] Share folders
 
