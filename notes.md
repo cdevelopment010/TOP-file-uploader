@@ -42,6 +42,7 @@
 - User
   - [x] Should be able to delete user
     - [x] With all files and folders
+  - [ ] Have a modal for warning about deleting user
 
 - [ ] Supabase
   - [x] Upload file

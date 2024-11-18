@@ -10,9 +10,9 @@
         <div class="modal-footer">
             <form action="<%= modal.action %>" method="post">
                 <input type="hidden" name="id" value="<%= modal.actionId %>">
-                <button type="submit"><%= modal.actionButton %></button>
+                <button type="submit" class="btn btn-danger"><%= modal.actionButton %></button>
             </form>
-            <button type="button" class="close-modal">Close</button>
+            <button type="button" class="close-modal btn btn-secondary">Close</button>
         </div>
     </div>
 </div>
